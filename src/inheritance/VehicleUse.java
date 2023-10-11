@@ -5,8 +5,9 @@ public class VehicleUse {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Vehicle v = new Car(8,499);
-		v.print();
+//		Vehicle v;
+//		Car c = new Car(8,45);
+		
 		
 //		Vehicle v = new Vehicle();
 //		Car c = new Car(8,499);

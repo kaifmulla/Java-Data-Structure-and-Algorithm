@@ -1,5 +1,9 @@
 package inheritance;
 
-public class Bicycle extends Vehicle{
-
+public abstract class Bicycle extends Vehicle{
+	
+	public boolean isMotorized() {
+		return false;
+	}
+	
 }

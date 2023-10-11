@@ -1,6 +1,6 @@
 package inheritance;
 
-public class Vehicle {
+public abstract class Vehicle {
 	
 	private String color;
 	protected int maxSpeed;
@@ -25,5 +25,9 @@ public class Vehicle {
 	public void print() {
 		System.out.println("color:- "+color+ " maxSpeed:- "+maxSpeed);
 	}
+	
+	public abstract boolean isMotorized();
+	
+	public abstract String getCompany();
 	
 }
