@@ -2,7 +2,7 @@ package inheritance_temp;
 
 import inheritance.Vehicle;
 
-public class Truck extends Vehicle {
+public abstract class Truck extends Vehicle {
 
 	int maxLoading;
 	
