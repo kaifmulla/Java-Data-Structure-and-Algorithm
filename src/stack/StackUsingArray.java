@@ -18,15 +18,21 @@ public class StackUsingArray {
 		return topIndex == 0;
 
 	}
-	public void push(int element) {
+	public void push(int element) throws StackFullException {
 //		topIndex = topIndex+1;
+		
+		if(topIndex == data.length) {
+			throw new StackFullException();
+		}
+		
 		if(topIndex < data.length) {
 			data[topIndex] = element;
 			
-		}else {
-			data = dynamicArray();
-			data[topIndex] = element;
 		}
+//		else {
+//			data = dynamicArray();
+//			data[topIndex] = element;
+//		}
 		topIndex++;
 		
 		
