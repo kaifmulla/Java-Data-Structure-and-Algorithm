@@ -110,6 +110,96 @@ public class BinaryTreeNodeUse {
 		
 	}
 	
+	public static int noofleaf(BinaryTreeNode<Integer> root) {
+		
+		if(root == null) return 0;
+		
+//		int count = 0;
+//		if(root.left == null && root.right == null) {
+//			count = 1;
+//		}
+//		count += noofleaf(root.left);
+//		count += noofleaf(root.right);
+//		return count;
+		
+		int left = noofleaf(root.left);
+		int right = noofleaf(root.right);
+		
+		if(root.left == null && root.right == null) {
+			return 1 + left + right;
+		}
+		else {
+			return left+right;
+		}
+		
+	}
+	
+	public static void printDepthK(BinaryTreeNode<Integer> root, int depth) {
+		if(root == null) return;
+		if(depth == 0) {
+			System.out.print(root.data+" ");
+			return;
+		}
+		printDepthK(root.left,depth-1);
+		printDepthK(root.right, depth-1);
+	}
+	
+	public static int height(BinaryTreeNode<Integer> root) {
+		if(root == null) {
+			return 0;
+		}
+		int left = height(root.left);
+		int right = height(root.right);
+		return 1 + Math.max(left, right);
+	}
+	
+	public static boolean isTreeBalanced(BinaryTreeNode<Integer> root) {
+		if(root == null) {
+			return true;
+		}
+		
+		int leftheight = height(root.left);
+		int rightheight = height(root.right);
+		
+		int diff = Math.abs(leftheight - rightheight);
+		
+		if(diff > 1) {
+			return false;
+		}
+		boolean left = isTreeBalanced(root.left);
+		boolean right = isTreeBalanced(root.right);
+		
+		return left && right;
+		
+		
+	}
+	
+	
+	public static BalanceTreeReturn isBalancedBetter(BinaryTreeNode<Integer> root) {
+		
+		if(root == null) {
+			BalanceTreeReturn ans = new BalanceTreeReturn(0,true);
+			return ans;
+		}
+		BalanceTreeReturn left = isBalancedBetter(root.left);
+		BalanceTreeReturn right = isBalancedBetter(root.right);
+		
+		BalanceTreeReturn ans = new BalanceTreeReturn();
+		ans.isBalanced = true;
+		int height = 1 + Math.max(left.height, right.height);
+		ans.height = height;
+		
+		if(Math.abs(left.height - right.height) > 1) {
+			ans.isBalanced = false;
+		}
+		if(!left.isBalanced || !right.isBalanced) {
+			ans.isBalanced = false;
+		}
+		return ans;
+		
+		
+	}
+	
 	
 
 	public static void main(String[] args) {
@@ -136,8 +226,19 @@ public class BinaryTreeNodeUse {
 //		System.out.println(root.left.right.data);
 //		System.out.println(root.right.left.data);
 		printSpecific(root2);
-		System.out.println(noofnodes(root2));
-		System.out.println(largestnode(root2));
+//		System.out.println(noofnodes(root2));
+//		System.out.println(largestnode(root2));
+//		System.out.println(noofleaf(root2));
+//		System.out.println();
+//		System.out.println();
+//		System.out.println();
+//		printDepthK(root2,2);
+//		System.out.println();
+//		System.out.println();
+		BalanceTreeReturn ans = isBalancedBetter(root2);
+		System.out.println(ans.isBalanced);
+		
+		
 		
 		
 	}
